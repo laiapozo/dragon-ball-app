@@ -1,0 +1,27 @@
+.detail {
+  width: 400px;
+  margin: 10px auto;
+  background-color: #ff8c00;
+  border-radius: 10px;
+  border: 2px solid black;
+
+  &__image {
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px;
+    background-color: black;
+    border-radius: 10px;
+    color: #ff8c00;
+  }
+
+  &__description {
+    padding: 5px;
+  }
+}

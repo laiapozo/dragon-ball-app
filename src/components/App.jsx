@@ -1,10 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, matchPath } from "react-router-dom";
 import { useEffect, useState } from "react";
 import callToApi from "../services/api";
 import "../scss/App.scss";
 import Header from "./Header";
 import Filters from "./Filters";
 import CharactersList from "./CharactersList";
+import CharacterDetail from "./CharacterDetail";
 
 function App() {
   const [charactersData, setCharactersData] = useState([]);
@@ -41,15 +42,38 @@ function App() {
             character.ki < parseInt(kiMaxInput);
     });
 
+  const { pathname } = useLocation();
+  const routeData = matchPath("/detail/:id", pathname);
+  let idCharacterRoute = undefined;
+  if (routeData !== null) {
+    idCharacterRoute = routeData.params.id;
+  }
+  const characterSelected = filteredCharacters.find((character) => {
+    return character.id === parseInt(idCharacterRoute);
+  });
+
   return (
     <>
       <Header />
-      <Filters
-        handleNameChange={handleNameChange}
-        handleKiMinChange={handleKiMinChange}
-        handleKiMaxChange={handleKiMaxChange}
-      />
-      <CharactersList characters={filteredCharacters} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Filters
+                handleNameChange={handleNameChange}
+                handleKiMinChange={handleKiMinChange}
+                handleKiMaxChange={handleKiMaxChange}
+              />
+              <CharactersList characters={filteredCharacters} />
+            </>
+          }
+        />
+        <Route
+          path="/detail/:id"
+          element={<CharacterDetail character={characterSelected} />}
+        />
+      </Routes>
     </>
   );
 }

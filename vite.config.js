@@ -8,5 +8,5 @@ export default defineConfig({
     open: true, // Abre automáticamente el navegador
   },
   plugins: [react()],
-  base: "dragon-ball-app.git",
+  base: "dragon-ball-app",
 });

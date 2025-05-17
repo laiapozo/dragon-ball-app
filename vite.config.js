@@ -8,4 +8,5 @@ export default defineConfig({
     open: true, // Abre automáticamente el navegador
   },
   plugins: [react()],
+  base: "/https://github.com/laiapozo/dragon-ball-app.git/",
 });

@@ -5,6 +5,7 @@ const Filters = ({
   handleNameChange,
   handleKiMinChange,
   handleKiMaxChange,
+  handleReset,
 }) => {
   return (
     <form>
@@ -54,7 +55,7 @@ const Filters = ({
             <option value="1000000000">1.000.000.000</option>
           </select>
         </div>
-        <input type="submit" value="Search" />
+        <input className="container__reset" type="reset" value="Reset" onClick={handleReset} />
       </fieldset>
     </form>
   );

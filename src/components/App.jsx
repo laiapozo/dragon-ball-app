@@ -31,6 +31,12 @@ function App() {
     setKiMaxInput(value);
   };
 
+  const handleReset = () => {
+    setNameInput("");
+    setKiMinInput("from");
+    setKiMaxInput("to");
+  };
+
   const filteredCharacters = charactersData
     .filter((character) => {
       return character.name.toLowerCase().includes(nameInput.toLowerCase());
@@ -64,6 +70,7 @@ function App() {
                 handleNameChange={handleNameChange}
                 handleKiMinChange={handleKiMinChange}
                 handleKiMaxChange={handleKiMaxChange}
+                handleReset={handleReset}
               />
               <CharactersList characters={filteredCharacters} />
             </>

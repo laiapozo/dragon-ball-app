@@ -12,7 +12,8 @@ const callToApi = () => {
         };
       });
       return parsedCharacters;
-    });
+    })
+    .catch((error) => console.log(`There is an error: ${error}`));
 };
 
 export default callToApi;
